@@ -1,0 +1,80 @@
+
+Análisis teórico de la eficiencia de tres algoritmos que permiten calcular la sucesión de Fibonacci.
+
+Autores:
+-Xabier Jiménez Gómez
+-Pablo González Rodríguez
+
+
+Introducción:
+Comprobación del funcionamiento de los diferentes algoritmos y su consiguiente análisis de la eficiencia en la medición de tiempos respectivamente.
+
+
+SO/Maquina utilizada para la comprobación de tiempos :
+
+Equipo:                      pablo8450-P6689-MD61019
+Distribuidor ID:             Ubuntu
+Descripción SO (versión):    Ubuntu 20.04.1 LTS 64bits
+Release:                     20.04
+
+
+Análisis de tiempos y complejidad de los diferentes algoritmos :
+-Los tiempos y sus mediciones están medidos en microsegundos.
+-Para la comparación de los diferentes tiempos de ejecucución usaremos como referencia los siguientes valores (NOTA-No se tienen en cuenta problemas de desbordamiento):
+                    *Fib1 = 2,4,8,16,32
+                    *Fib2 y Fib3 = 1000,10000,100000,1000000,10000000
+-Para t(n) con tiempos demasiado bajos (< 500 microsegundos) hacemos k iteraciones para obtener un tiempo mas preciso. En concreto utilizamos k=100.
+
+
+Tablas para los difentes algoritmos 
+------------------------------------------------------------------------------------------------------
+Fib1          n                 t(n)                Cota Sub          Y         Cota Sobre
+              2                0.010		     0.008264      0.003820       0.002500 
+              4 		0.030		     0.020490      0.004377       0.001875
+              8                0.250		     0.116627      0.005322       0.000977
+              16		11.060		     2.406978      0.005011       0.000169
+              32		16731.000	     792.420996    0.003435       0.000004
+------------------------------------------------------------------------------------------------------
+Fib2          n                 t(n)                Cota Sub          Y         Cota Sobre
+            1000               3.480               0.013854      0.003480       0.000564
+            10000              35.090              0.022140      0.003569       0.000381
+            100000             339.580             0.033958      0.003396       0.000295
+            1000000            3590.000            0.056898      0.003590       0.000260
+            10000000           34633.000           0.086994      0.003463       0.000215
+-----------------------------------------------------------------------------------------------------
+Fib3          n                 t(n)                Cota Sub          Y         Cota Sobre
+            1000               0.050               0.019024      0.007238       0.001581
+            10000              0.060               0.019770      0.006514       0.000600
+            100000             0.080               0.023577      0.006949       0.000253
+            1000000            0.090               0.024214      0.006514       0.000090
+            10000000           0.110               0.027399      0.006825       0.000035
+
+Cotas Utilizadas :
+
+-Fib1 : * Cota subestimada   =   1,1^n
+        * Cota Y (ajustada)  =   (1+sqrt(5))/2)^n)
+        * Cota sobreestimada =   2^n
+
+-Fib2 : * Cota subestimada   =   n^0,08
+        * Cota Y (ajustada)  =   n
+        * Cota sobreestimada =   n*log(n)
+
+-Fib3 : * Cota subestimada   =   sqrt(log(n))
+        * Cota Y (ajustada)  =   log(n)
+        * Cota sobreestimada =   n^0,05
+        
+-------------------------------------------------------------------------
+Conclusiones:
+
+Fib1 y Fib3 son considerablemente más rápidos que Fib2,siendo Fib3 el mas estable para mayores cantidades pues sigue manteniendo tiempos bajos,al contrario de Fib1 que aumenta considerablemente.La cota subestimada en Fib1 se dispara al aumentar N,la cota sobreestimada se reduce ligeramente en todos los casos y la cota ajustada se mantiene constantemente cercana a los primeros valores,siendo Fib2 la que cuenta con estos mas bajos.
+
+
+Las cotas analizadas empiricamente corresponden, en su gran medida, a las 
+esperadas con un análisis teórico.
+
+-------------------------------------------------------------------------
+Anomalias:
+* 
+
+
+

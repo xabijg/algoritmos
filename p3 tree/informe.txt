@@ -1,0 +1,86 @@
+Estudio de la complejidad computacional de las operaciones insertar y buscar en arboles binarios de busqueda con numeros enteros.
+
+Autores:
+-Xabier Jimenez Gomez
+-Pablo Gonzalez Rodriguez
+
+
+Introduccion:
+En esta practica implementaremos en lenguaje C arboles binarios de busqueda
+con todas las operaciones necesarias para su uso. Implementaremos tambien 
+los metodos de insercion y busqueda en dicha estructura,para posteriormente 
+estudiar su consiguiente analisis de la eficiencia en la medicion de tiempos 
+respectivamente.
+
+SO/Maquina utilizada para la comprobacion de tiempos :
+
+Equipo:                      pablo8450-P6689-MD61019
+Procesador:                  IntelCore i5-8250U CPU @1.60GHz x 8
+RAM:                         8GB
+Descripcion SO (version):    Ubuntu 20.04.1 LTS 64bits
+Release:                     20.04
+
+Analisis de tiempos y complejidad de los diferentes algoritmos :
+-Los tiempos estan medidos en microsegundos.
+-En t(n), '*' indica que el tiempo no se calculo con una ejecucion del Para t(n) con tiempos demasiado bajos (< 500 microsegundos) hacemos k iteraciones para obtener. un tiempo mas preciso. En concreto utilizamos k=1000.No lo consideramos en la medicion de tiempos de insercion pero si en los de busqueda
+
+----------------------------------------------------------------------------------------------
+Insercion de n elementos
+----------------------------------------------------------------------------------------------
+           N           t(n)       t(n)/n          t(n)/n^1,25    t(n)/1,5 
+                                  c.subestimada   c.ajustada     c.sobreestimada 
+
+         8000        1536.00       0.192000       0.020302       0.002147
+        16000        3430.00       0.214375       0.019061       0.001695
+        32000        8077.00       0.252406       0.018872       0.001411
+        64000       21628.00       0.337938       0.021247       0.001336
+       128000       49516.00       0.386844       0.020452       0.001081
+       256000       99328.00       0.388000       0.017249       0.000767
+       
+Cota inferior = n -> Cota subestimada
+Cota ajustada = n^1.25 -> Tiende a 0.019
+Cota superior = n^1.5 -> Cota sobreestimada
+----------------------------------------------------------------------------------------------
+
+
+----------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------
+Busqueda de n elementos
+----------------------------------------------------------------------------------------------
+           N           t(n)       t(n)/1         t(n)/1,25     t(n)/1,5 
+                                  c.subestimada  c.ajustada    c.sobreestimada 
+
+        8000        1326.00       0.165750       0.017526       0.001853
+       16000        3012.00       0.188250       0.016738       0.001488
+       32000        7525.00       0.235156       0.017582       0.001315
+       64000       18363.00       0.286922       0.018039       0.001134
+      128000       42961.00       0.335633       0.017744       0.000938
+      256000       88418.00       0.345383       0.015355       0.000683
+      
+Cota inferior = n-> Cota subestimada
+Cota ajustada = n^1.25 -> Tiende a 0.017
+Cota superior = n^1.5 -> Cota sobreestimada
+      ---------------------------------------------------------------------------------------------- ----------------------------------------------------------------------------------------------
+      
+Conclusiones:
+
+1-Observamos que la complejidad computacional de nuestro algoritmo de insercion de elementos y de busqueda no se corresponde con la cota ajustada n*log(n) esperada teoricamente dando valores dispares.Por ese modo hemos obtado por n^1,25.
+
+2-Se aprecian valores de los tiempos similares ya que ambas operaciones necesitan recorrer el arbol para saber donde tienen que seguir insertando o buscando respectivamente.
+
+3-Las cotas analizadas empiricamente corresponden, en su gran medida(a excepcion de la cota ajustada), a las esperadas con un analisis teorico.
+
+
+
+-----------------------------------------------------------------------------------------------
+Anomalias:
+* 1-La cota ajustada prevista teoricamente (n*log(n)) no da valores que tiendan a una constante.
+* 2-Se han comenzado las mediciones ne valores de n=8000 debido a que con cantidades menores se mostraban valores inestables.
+
+-----------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------
+
+
+
+
+

@@ -1,0 +1,160 @@
+
+Analisis empirico de distintos algoritmos para la ordenacion de vectores.
+
+Autores:
+-Xabier Jimenez Gomez
+-Pablo Gonzalez Rodriguez
+
+Introduccion:
+Comprobacion del funcionamiento de los diferentes algoritmos de ordenacion y su consiguiente analisis de la eficiencia en la medicion de tiempos respectivamente.
+
+SO/Maquina utilizada para la comprobacion de tiempos :
+
+Equipo:                      pablo8450-P6689-MD61019
+Distribuidor ID:             Ubuntu
+Procesador:                  IntelCore i5-8250U CPU @1.60GHz x 8
+RAM:                         8GB
+Descripcion SO (version):    Ubuntu 20.04.1 LTS 64bits
+Release:                     20.04
+
+
+Analisis de tiempos y complejidad de los diferentes algoritmos :
+-Los tiempos estan medidos en microsegundos.
+-En t(n), '*' indica que el tiempo no se calculo con una ejecucion del Para t(n) con tiempos demasiado bajos (< 500 microsegundos) hacemos k iteraciones para obtener. un tiempo mas preciso. En concreto utilizamos k=1000.
+
+
+Analisis ordenacion por insercion:
+----------------------------------------------------------------------------------------------
+Tabla tiempos - Insercion - Descendente
+
+----------------------------------------------------------------------------------------------
+   	  n 		 t(n) 		 	t(n)/n^1.8 	 t(n)/n^2 	 t(n)/n^2.3
+----------------------------------------------------------------------------------------------
+                                              c.subestimada  c.ajustada     c.sobreestimada
+*        500          1.967                   0.000027268    0.000007868    0.000001219
+*       1000          3.954                   0.000015741    0.000003954    0.000000498
+*       2000          7.672                   0.000008771    0.000001918    0.000000196
+*       4000         15.741                   0.000005168    0.000000984    0.000000172
+*       8000         30.953                   0.000002918    0.000000484    0.000000132
+
+
+n^1.8 -> Cota subestimada
+n^2.3 -> Cota sobreestimada
+n^2 -> Tiende a C = 0.000005 -> Cota ajustada
+----------------------------------------------------------------------------------------------
+
+Tabla tiempos - Insercion - Ascendente
+
+----------------------------------------------------------------------------------------------
+   	  n 		 	t(n) 		 t(n)/n^0.87 	t(n)/n*1.85 	t(n)/n^1.35
+----------------------------------------------------------------------------------------------
+                                              c.subestimada   c.ajustada     c.sobreestimada
+*        500                   1.908           0.008560014    0.002062703    0.000433480
+*       1000                   3.793           0.009310711    0.002050270    0.000338051
+*       2000                   7.756           0.010416977    0.002096216    0.000271174
+*       4000                  15.211           0.011178038    0.002055541    0.000208630
+*       8000                  30.917           0.012431086    0.002088986    0.000166351
+
+n^0.87 -> Cota subestimada
+n*1.35 -> Cota sobreestimada
+n^1.85 -> Tiende a C = 0.002 -> Cota ajustada
+
+------------------------------------------------------------------------------------------------
+
+Tabla tiempos - Insercion - Aleatorio
+
+------------------------------------------------------------------------------------------------
+   	  n 		 t(n) 		 	t(n)/n^1.7 	 t(n)/n^2 	 t(n)/n^2.3
+------------------------------------------------------------------------------------------------
+                                              c.subestimada  c.ajustada     c.sobreestimada
+*        500            1.926                 0.000049706    0.000007704    0.000001194
+*       1000            3.961                 0.000031463    0.000003961    0.000000499
+*       2000            7.828                 0.000019138    0.000001957    0.000000200
+*       4000           15.204                 0.000011441    0.000000950    0.000000179
+*       8000           30.862                 0.000007148    0.000000482    0.000000133
+Cotas utilizadas:
+n^1.7 -> Cota subestimada
+n^2.3 -> Cota sobreestimada
+n^2 -> C = 0.000006, por lo que determinamos que esta ultima es la cota ajustada.
+
+
+----------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------
+
+Analisis Shell:
+
+Tabla tiempos - Shell - Aleatorio
+
+----------------------------------------------------------------------------------------------
+   	  n 			 t(n) 		 t(n)/n^1.05 	 t(n)/n^2 	 t(n)/n^1.8
+----------------------------------------------------------------------------------------------
+                                              c.subestimada   c.ajustada     c.sobreestimada
+*        500                    15.940         0.059349261    0.015123138    0.000411376
+*       1000                    38.470         0.076757741    0.016792764    0.000305578
+*       2000                    83.157         0.088914342    0.016701105    0.000203305
+*       4000                   180.855         0.103627860    0.016711804    0.000136091
+*       8000                   397.967         0.122198556    0.016919451    0.000092171
+
+n^1.05 -> Cota subestimada
+n^1.8 -> Cota sobreestimada
+n^2 -> Tiende a C = 0.01 -> Cota ajustada
+
+----------------------------------------------------------------------------------------------
+
+Tabla tiempos - Shell - Ascendente
+
+----------------------------------------------------------------------------------------------
+   	  n 		 	t(n) 		 t(n)/n^0.9 	 t(n)/n^1.2 	 t(n)/n^1.7
+----------------------------------------------------------------------------------------------
+                                              c.subestimada   c.ajustada     c.sobreestimada
+*        500                   15.568          0.022819931    0.008983981    0.000215818
+*       1000                   35.822          0.025360034    0.008998080    0.000142610
+*       2000                   80.443          0.027504691    0.008795333    0.000091967
+*       4000                  177.366          0.029289191    0.008441087    0.000058232
+*       8000                  386.990          0.030864216    0.008016629    0.000036487
+
+n^0.9 -> Cota subestimada
+n^1.7 -> Cota sobreestimada
+n^1.2 -> Tiende a C = 0.008 -> Cota ajustada
+
+----------------------------------------------------------------------------------------------
+
+Tabla tiempos - Shell - Descendente
+
+----------------------------------------------------------------------------------------------
+   	  n 		 	t(n) 		 t(n)/n^0.9 	 t(n)/n^1.2 	 t(n)/n^1.7
+----------------------------------------------------------------------------------------------
+                                              c.subestimada   c.ajustada     c.sobreestimada
+*        500                   14.982          0.055782348    0.013275006    0.000719810
+*       1000                   35.268          0.070368911    0.014268583    0.000558960
+*       2000                   78.627          0.084070709    0.014524687    0.000411078
+*       4000                  170.850          0.097895108    0.014410702    0.000294659
+*       8000                  374.499          0.114992542    0.014423009    0.000213062
+
+n^0.9 -> Cota subestimada
+n^1.7 -> Cota sobreestimada
+n^1.2 -> Tiende a C = 0.01 -> Cota ajustada 
+
+-----------------------------------------------------------------------------------------------	
+-----------------------------------------------------------------------------------------------
+Conclusiones:
+
+1-La ordenacion por insercion es normalmente lenta, con una 
+complejidad cuadratica (n^2).Solo cambia la regla para ser rapido cuando 
+ordenamos un algoritmo ya ordenado, en ese caso sigue una recta lineal 
+(tiempo que tarde en recorrer el vector).
+
+2-La ordenación shell es un algoritmo rapido cuando "ordenamos" de manera 
+ascendente.
+
+3-La ordenacion shell es mejor, en general, que la 
+inserción (la inserción solo es mas rapida cuando el vector viene ya ordenado).
+
+4-Las cotas analizadas empiricamente corresponden, en su gran medida, a las 
+esperadas con un analisis teorico.
+
+-----------------------------------------------------------------------------------------------
+Anomalias:
+* 
+

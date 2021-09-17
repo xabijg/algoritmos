@@ -1,0 +1,230 @@
+Analisis empirico de la complejidad del algoritmo de ordenacion 
+
+Autores:
+-Xabier Jimenez Gomez
+
+
+Introduccion:
+En esta practica implementaremos en lenguaje C el algoritmo de ordenacion con vectores de distinto tamaño y en distintas situaciones iniciales ya sea ordenado descendentemente/ascendentemente o desordenado aleatoriamente.Ademas comprobaremos su eficiencia con distintos valores de umbral 1,10 y 100.
+
+SO/Maquina utilizada para la comprobacion de tiempos :
+
+Equipo:                      pablo8450-P6689-MD61019
+Procesador:                  IntelCore i5-8250U CPU @1.60GHz x 8
+RAM:                         8GB
+Descripcion SO (version):    Ubuntu 20.04.1 LTS 64bits
+Release:                     20.04
+
+
+Analisis de tiempos y complejidad de los diferentes algoritmos :
+-Los tiempos estan medidos en microsegundos.
+-En t(n), '*' indica que el tiempo no se calculo con una ejecucion del bucle. Para t(n) con tiempos demasiado bajos (< 500 microsegundos) hacemos k iteraciones para obtener. un tiempo mas preciso. En concreto utilizamos k=1000.
+
+
+Analisis ordenacion quicksort:
+----------------------------------------------------------------------------------------------
+Tabla tiempos -  - Ascendente           ** UMBRAL = 1 **
+----------------------------------------------------------------------------------------------
+Ordenacion con inicializacion ascendente y umbral 1
+
+           N           t(n)       t(n)/n^0.8      t(n)/n*log(n)       t(n)/n^2 
+                                  c.subestimada   c.ajustada     c.sobrestimada 
+                                  
+*         500         27.536      0.190864364    0.008861701    0.000110144
+*        1000         57.787      0.230054191    0.008365525    0.000057787
+*        2000        124.955      0.285712764    0.008219748    0.000031239
+*        4000        258.856      0.339946241    0.007802461    0.000016179
+         8000        527.000      0.397501366    0.007329872    0.000008234
+        16000       1088.000      0.471338493    0.007024544    0.000004250
+        32000       2339.000      0.581982920    0.007046205    0.000002284
+
+Cota inferior = 0.8 -> Cota subestimada
+Cota ajustada = n^n*log(n) -> Tiende a 0.0077
+Cota superior = n^2 -> Cota sobreestimada
+         ----------------------------------------------------------------------------------------------
+Tabla tiempos -  - Descendente           ** UMBRAL = 1 **
+----------------------------------------------------------------------------------------------        
+Ordenacion con inicializacion descendente y umbral 1
+
+           N           t(n)       t(n)/n^0.8      t(n)/n*log(n)       t(n)/n^2 
+                                  c.subestimada   c.ajustada     c.sobrestimada 
+                                  
+*         500         29.971      0.207742441    0.009645339    0.000119884
+*        1000         62.471      0.248701531    0.009043604    0.000062471
+*        2000        130.607      0.298636205    0.008591546    0.000032652
+*        4000        272.478      0.357835522    0.008213057    0.000017030
+         8000        550.000      0.414849623    0.007649771    0.000008594
+        16000       1123.000      0.486501037    0.007250517    0.000004387
+        32000       2390.000      0.594672586    0.007199842    0.000002334
+
+         
+Cota inferior = 0.8 -> Cota subestimada
+Cota ajustada = n^n*log(n) -> Tiende a 0.008
+Cota superior = n^2 -> Cota sobreestimada
+         ----------------------------------------------------------------------------------------------
+Tabla tiempos -  - Aleatorio          ** UMBRAL = 1 **
+----------------------------------------------------------------------------------------------        
+Ordenacion con inicializacion aleatorio y umbral 1
+
+           N           t(n)       t(n)/n^0.8      t(n)/n*log(n)       t(n)/n^2 
+                                  c.subestimada   c.ajustada     c.sobrestimada 
+                                  
+*         500         51.677      0.358196461    0.016630815    0.000206708
+*        1000        111.852      0.445290832    0.016192235    0.000111852
+*        2000        237.867      0.543888904    0.015647287    0.000059467
+*        4000        516.597      0.678428192    0.015571314    0.000032287
+         8000       1125.000      0.848556047    0.015647259    0.000017578
+        16000       2315.000      1.002893945    0.014946525    0.000009043
+        32000       5469.000      1.360780072    0.016475288    0.000005341
+
+         
+Cota inferior = 0.8 -> Cota subestimada
+Cota ajustada = n^n*log(n) -> Tiende a 0.014
+Cota superior = n^2 -> Cota sobreestimada
+         ----------------------------------------------------------------------------------------------         ----------------------------------------------------------------------------------------------
+Tabla tiempos -  - Ascendente          ** UMBRAL = 10 **
+----------------------------------------------------------------------------------------------     
+Ordenacion por quicksort con inicializacion ascendente y umbral 10
+
+           N           t(n)       t(n)/n^0.8      t(n)/n*log(n)       t(n)/n^2 
+                                  c.subestimada   c.ajustada     c.sobrestimada 
+                                  
+*         500         21.778      0.150953084    0.007008648    0.000087112
+*        1000         39.685      0.157988831    0.005744992    0.000039685
+*        2000         86.639      0.198102262    0.005699257    0.000021660
+*        4000        181.792      0.238740871    0.005479591    0.000011362
+*        8000        391.471      0.295275631    0.005444843    0.000006117
+        16000        831.000      0.360002103    0.005365254    0.000003246
+        32000       1653.000      0.411294471    0.004979640    0.000001614
+
+
+Cota inferior = 0.8 -> Cota subestimada
+Cota ajustada = n^n*log(n) -> Tiende a 0.006
+Cota superior = n^2 -> Cota sobreestimada
+
+----------------------------------------------------------------------------------------------
+Tabla tiempos -  - Descendente          ** UMBRAL = 10 **
+----------------------------------------------------------------------------------------------
+Ordenacion con inicializacion descendente y umbral 10
+
+           N           t(n)       t(n)/n^0.8      t(n)/n*log(n)       t(n)/n^2 
+                                  c.subestimada   c.ajustada     c.sobrestimada 
+                                  
+*         500         20.237      0.140271722    0.006512720    0.000080948
+*        1000         43.813      0.174422695    0.006342581    0.000043813
+*        2000         93.275      0.213275644    0.006135785    0.000023319
+*        4000        199.375      0.261831991    0.006009579    0.000012461
+*        8000        449.946      0.339381688    0.006258153    0.000007030
+        16000        859.000      0.372132138    0.005546032    0.000003355
+        32000       1761.000      0.438166705    0.005304988    0.000001720
+
+
+Cota inferior = 0.8 -> Cota subestimada
+Cota ajustada = n^n*log(n) -> Tiende a 0.0058
+Cota superior = n^2 -> Cota sobreestimada
+
+----------------------------------------------------------------------------------------------
+Tabla tiempos -  - Aleatoria          ** UMBRAL = 10 **
+----------------------------------------------------------------------------------------------
+Ordenacion con inicializacion aleatorio y umbral 10
+
+           N           t(n)       t(n)/n^0.8      t(n)/n*log(n)       t(n)/n^2 
+                                  c.subestimada   c.ajustada     c.sobrestimada 
+                                  
+*         500         45.683      0.316649359    0.014701812    0.000182732
+*        1000         98.207      0.390969109    0.014216919    0.000098207
+*        2000        215.229      0.492126545    0.014158121    0.000053807
+*        4000        469.375      0.616413244    0.014147944    0.000029336
+         8000        892.000      0.672810662    0.012406538    0.000013937
+        16000       1879.000      0.814011975    0.012131542    0.000007340
+        32000       3989.000      0.992530940    0.012016808    0.000003896
+
+         
+Cota inferior = 0.8 -> Cota subestimada
+Cota ajustada = n^n*log(n) -> Tiende a 0.013
+Cota superior = n^2 -> Cota sobreestimada
+          ----------------------------------------------------------------------------------------------          ----------------------------------------------------------------------------------------------
+Tabla tiempos -  - Ascendente          ** UMBRAL = 100 **
+----------------------------------------------------------------------------------------------
+Ordenacion con inicializacion ascendente y umbral 100
+
+           N           t(n)       t(n)/n^0.8      t(n)/n*log(n)       t(n)/n^2 
+                                  c.subestimada   c.ajustada     c.sobrestimada 
+                                  
+*         500          8.937      0.061946355    0.002876127    0.000035748
+*        1000         20.408      0.081245711    0.002954361    0.000020408
+*        2000         48.255      0.110336276    0.003174294    0.000012064
+*        4000        110.576      0.145215469    0.003332992    0.000006911
+*        8000        249.219      0.187978924    0.003466306    0.000003894
+        16000        518.000      0.224405643    0.003344406    0.000002023
+        32000       1107.000      0.275440399    0.003334822    0.000001081
+
+
+Cota inferior = 0.8 -> Cota subestimada
+Cota ajustada = n^n*log(n) -> Tiende a 0.003
+Cota superior = n^2 -> Cota sobreestimada
+----------------------------------------------------------------------------------------------
+Tabla tiempos -  - Descendente          ** UMBRAL = 100 **
+----------------------------------------------------------------------------------------------
+Ordenacion por  con inicializacion descendente y umbral 100
+
+           N           t(n)       t(n)/n^0.8      t(n)/n*log(n)       t(n)/n^2 
+                                  c.subestimada   c.ajustada     c.sobrestimada 
+                                  
+*         500         13.444      0.093186393    0.004326580    0.000053776
+*        1000         27.132      0.108014438    0.003927759    0.000027132
+*        2000         58.630      0.134058976    0.003856779    0.000014657
+*        4000        131.054      0.172108487    0.003950242    0.000008191
+*        8000        304.012      0.229307752    0.004228404    0.000004750
+        16000        622.000      0.269460058    0.004015870    0.000002430
+        32000       1378.000      0.342869801    0.004151206    0.000001346
+
+
+Cota inferior = 0.8 -> Cota subestimada
+Cota ajustada = n^n*log(n) -> Tiende a 0.004
+Cota superior = n^2 -> Cota sobreestimada
+
+----------------------------------------------------------------------------------------------
+Tabla tiempos -  - Aleatoria         ** UMBRAL = 100 **
+----------------------------------------------------------------------------------------------
+Ordenacion  con inicializacion aleatorio y umbral 100
+
+           N           t(n)       t(n)/n^0.8      t(n)/n*log(n)       t(n)/n^2 
+                                  c.subestimada   c.ajustada     c.sobrestimada 
+                                  
+*         500         59.032      0.409177264    0.018997819    0.000236128
+*        1000        115.639      0.460367151    0.016740460    0.000115639
+*        2000        251.718      0.575559565    0.016558429    0.000062930
+*        4000        524.206      0.688420817    0.015800665    0.000032763
+         8000        977.000      0.736923785    0.013588776    0.000015266
+        16000       2086.000      0.903687589    0.013468013    0.000008148
+        32000       4403.000      1.095541170    0.013263977    0.000004300
+
+         
+Cota inferior = 0.8 -> Cota subestimada
+Cota ajustada = n^n*log(n) -> Tiende a 0.0151
+Cota superior = n^2 -> Cota sobreestimada
+
+----------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------
+Conclusiones:
+
+1-El algoritmo de ordenacion quicksort es mas efectivo que los dados anteriormente dado que se minimizan las operaciones gracias a las particiones y al pivote.
+
+2-CONCLUSION PREGUNTA PDF-Se obtienen mejores tiempos para umbrales mas grandes para vectores ordenados ascendentemente,en este caso 100 al realizar menos particiones se realiza mas rapido.En cambio para inicializacion descendente se encuentra mas estable con los distintos umbrales,en este caso con umbral 10 el mejor caso.Por ultimo en la aleatoria vemos que la cota teorica se encuentra mas estable para valores mas altos.Por tanto el valor mas optimo seria en este caso el umbral 10.
+
+3-Con umbral=1 presenta las peores mediciones.
+
+4-Umbral=10 presenta los valores de las mediciones mas estables.
+
+5-Umbral=100 presenta el mejor tiempo para un vector ya ordenado ascendentemente ,pero en cambio para un vector ordenado aleatoriamente presenta mas dificultaz.
+
+6-Las cotas analizadas empiricamente corresponden, en su gran medida, a las 
+esperadas con un analisis teorico.
+
+-----------------------------------------------------------------------------------------------
+Anomalias:
+
+* 1-La cota ajustada prevista teoricamente (n*log(n)) da valores en ciertas ocasiones que parecen de una cota sobreestimada/subestimada pero en la mayoria de las ocasiones tiene un valor que lo desmiente.
+
+

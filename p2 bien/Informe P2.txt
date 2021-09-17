@@ -1,0 +1,240 @@
+
+XaBier Jimenez Gomez xabier.jimenez.gomez
+
+
+Algoritmos Práctica 2 Ordenación por inserción y ordenación shell.
+
+
+
+	Esta prática consiste en el estudio de la complejidad computacional de los algoritmos de ordenación por inserción y ordenación por shell.
+Estos algoritmos hacen la funcion de ordenar de manera ascendente cualquier vector desordenado. 
+
+
+	Para el análisis de la complejidad computacional, llevaremos acabo la medición de tiempos de ejecución de dichos algoritmos en la unidad de microsegundos (‎µs). 
+La ordenación de elementos será aplicado a vectores de números enteros con diferentes tamaños. Estos siguen una progresión geométrica de razón 2 (500,1000,2000,4000,8000,16000,32000).
+Además, la inicialización de los vectores será de 3 maneras distintas: ascendente, descendente y aleatoria. Dependiendo de cada una, cada vector tardará más o menos tiempo en ser ordenado.
+
+
+	Dicha práctica ha sido realizada en un ordenador portátil con las siguientes especificaciones:un procesador Ryzen 7 3750h
+(4 nucleos 8 hilos, 2.3 GHz hasta 4.0 GHz), 16 Gb de Ram (2*8) DDR4 2666 MHZ, una tarjeta gráfica GTX 1650 MAX-Q, una memoria 
+512GB SSD M.2 PCIe Gen3 NVMe con el SO de la distribución Linux Ubuntu 20.04.1 LTS.
+
+
+	Para el análisis de la complejidad teórica, haremos uso del sistema de cotas (subestimada, ajustada y sobreestimada) aplicado a los 2 algoritmos.
+A continuación, se muestran 6 tablas con las variables: tamaño del vector, tiempo de ordenacion, tiempo/cota subestimada, tiempo/cota ajustada y tiempo/cota sobreestimada.
+
+
+Cada tabla representa un tipo de inicialización junto con un algoritmo usado para su posterior ordenación:
+
+
+
+
+
+		Tiempos shell aleatorio: 
+
+
+-Cotas: subestimada (n*log(n)), ajustada (n^1.15), sobreestimada (n^2.0).
+
+
+La sucesión de la cota ajustada tiende a 0.11.
+
+
+	  n            t(n)      t(n)/n*log(n)   t(n)/n^1.15    t(n)/n^2.0
+
+*        500         14.450       0.028900       0.011378       0.004479
+
+*       1000         32.730       0.032730       0.011613       0.004120
+
+*       2000         73.830       0.036915       0.011805       0.003775
+
+*       4000        164.390       0.041097       0.011844       0.003413
+
+*       8000        379.230       0.047404       0.012313       0.003198
+
+       16000        761.000       0.047563       0.011134       0.002606
+
+       32000       1649.000       0.051531       0.010872       0.002294
+
+
+
+
+
+
+		Tiempos Shell ascendente: 
+
+
+-Cotas: subestimada (n), ajustada (n^1.15), sobreestimada (n^1.30)
+
+
+La sucesión de la cota ajustada tiende a 0.14
+
+
+ 	   n            t(n)        t(n)/n        t(n)/n^1.15    t(n)/n^1.30
+
+*         500         17.600       0.035200       0.013858       0.005456
+
+*        1000         40.190       0.040190       0.014260       0.005060
+
+*        2000         90.330       0.045165       0.014443       0.004618
+
+*        4000        200.530       0.050133       0.014448       0.004164
+
+*        8000        454.500       0.056813       0.014756       0.003833
+
+        16000        952.000       0.059500       0.013928       0.003260
+
+        32000       2072.000       0.064750       0.013661       0.002882
+
+
+
+
+
+		Tiempos Shell descendente: 
+
+
+-Cotas: subestimada (n), ajustada (n^1.15), sobreestimada (n^1.30).
+
+
+La sucesión de la cota ajustada tiende a 0.17.
+
+
+Se puede apreciar que en la columna de t/n^1.15, 0.019256 es una anomalía ya que se aleja del valor al que tiende la sucesión de la cota ajustada.
+  
+
+	   n            t(n)        t(n)/n        t(n)/n^1.15    t(n)/n^1.30
+
+*         500         22.750       0.045500       0.017913       0.007052
+
+*        1000         54.270       0.054270       0.019256       0.006832
+
+*        2000        109.820       0.054910       0.017559       0.005615
+
+*        4000        248.300       0.062075       0.017890       0.005156
+
+         8000        539.000       0.067375       0.017500       0.004545
+
+        16000       1161.000       0.072563       0.016986       0.003976
+
+        32000       2508.000       0.078375       0.016535       0.003488
+
+
+
+
+
+
+		Tiempos Insercion aleatoria: 
+
+
+-Cotas: subestimada (n^1.8), ajustada (n^2.0), sobreestimada (n^2.2).
+
+
+La sucesión de la cota ajustada tiende a 0.001
+
+
+Podríamos tomar como valor anómalo el 0.00905, en la columna de t/n^2.0 (sucesión de cota ajustada), ya que este valor se aleja del valor al que tiende la sucesión (0.0010).
+
+
+ 	  n            t(n)       t(n)/n^1.8      t(n)/n^2.0    t(n)/n^2.2
+
+*        500        253.040       0.003508       0.001012       0.000292
+
+        1000        985.000       0.003921       0.000985       0.000247
+
+        2000       3908.000       0.004468       0.000977       0.000214
+
+        4000      16080.000       0.005279       0.001005       0.000191
+
+        8000      68131.000       0.006424       0.001065       0.000176
+
+       16000     261089.000       0.007069       0.001020       0.000147
+
+       32000     926547.000       0.007204       0.000905       0.000114
+
+
+
+
+
+
+		Tiempos Insercion ascendente: 
+
+
+-Cotas: subestimada (n^0.8), ajustada (n), sobreestimada (n^1.2).
+
+
+La sucesión de la cota ajustada tiende a 0.0034.
+
+
+  	  n            t(n)        t(n)/n^0.8      t(n)/n        t(n)/n^1.2       
+  	  
+*         500          1.780       0.012338       0.003560       0.001027
+
+*        1000          3.200       0.012739       0.003200       0.000804
+
+*        2000          6.550       0.014977       0.003275       0.000716
+
+*        4000         12.770       0.016770       0.003193       0.000608
+
+*        8000         25.520       0.019249       0.003190       0.000529
+
+*       16000         51.670       0.022384       0.003229       0.000466
+
+*       32000        103.300       0.025703       0.003228       0.000405
+
+*       64000        206.630       0.029529       0.003229       0.000353
+
+*      128000        410.600       0.033702       0.003208       0.000305
+
+       256000        816.000       0.038468       0.003187       0.000264
+
+
+
+
+
+
+	Tiempos Insercion descendente:
+
+
+-Cotas: subestimada (n^1.8), ajustada (n^2.0), sobreestimada (n^2.2). 
+
+
+La sucesión de la cota ajustada tiende a 0.0018.
+
+
+Como valor anómalo tomamos el 0.001707 de la columna de la sucesión de la cota ajustada, ya que este se aleja del valor 0.0018.
+
+
+          n          t(n)        t(n)/n^1.8     t(n)/n^2.0     t(n)/n^2.2
+
+*        500        471.410       0.006535       0.001886       0.000544
+
+        1000       1707.000       0.006796       0.001707       0.000429
+
+        2000       7295.000       0.008340       0.001824       0.000399
+
+        4000      30043.000       0.009864       0.001878       0.000357
+
+        8000     115728.000       0.010911       0.001808       0.000300
+
+       16000     492457.000       0.013334       0.001924       0.000278
+
+       32000    1897803.000       0.014756       0.001853       0.000233
+
+
+
+
+	No se ha registrado ningún valor anómalo en las cotas sobreestimadas ni en las subestimadas de ninguna de las mediciones realizadas.
+
+
+	Se ha tenido que aumentar el tamaño del vector en la inserción ascendente debido a que todos los tiempos daban menores que 500 y al aumentar la k seguíamos sin conseguir mínimo una fila con tiempo mayor que 500 microsegundos, por ello pasamos de un vector de tamaño 32.000 a 256.000.
+
+
+	Las iteraciones usadas para la medición de tiempos (k) han sido 100, las suficientes para obtener al menos una fila con tiempos mayores de 500 microsegundos.
+
+
+	Algunos comentarios que hacer respecto a las tablas son que desde luego que no es lo mismo ordenar un vector descendente que uno ascendente, ya que el primero no está ordenado pero el segundo sí.
+Es decir, los tiempos varían según el tipo de inicialización. Cuantos más intercambios (por ellos más desordenado) haga el algoritmo, mayor será su tiempo de ejecución. Tenemos un mejor caso que es la inicialización ascendente y otro que es el peor, la inicialización descendente.
+
+
+	Una vez analizada la complejidad teórica de estos algoritmos, procedemos a comentar lo que se ha sacado en limpio de dicha medición. A primera vista, se puede apreciar que el algoritmo de shell es más eficiente que el de inserción. Tanto en el caso aleatorio como en el descendente, tenemos tiempos menores para el shell; quitando el caso de que el vector ya esté ordenado. Aún así, en nuestro caso, a mayor eficiencia mayor complejidad de código. Bien se puede observar que el código del shell es más complejo que el de inserción y es perfectamente normal que no se llegue a entender a pesar de un buen esfuerzo.
+ 
+ 
